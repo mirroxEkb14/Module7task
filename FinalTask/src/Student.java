@@ -11,49 +11,20 @@ public class Student extends Person{
         this.allTasksDone = false;
     }
 
-    public int getTaskCount() {
-        return taskCount;
-    }
-
-    public void setTaskCount(int taskCount) {
-        this.taskCount = taskCount;
-    }
-
-    public static int getTaskCountForAll() {
-        return taskCountForAll;
-    }
-
-    public static void setTaskCountForAll(int taskCountForAll) {
-        Student.taskCountForAll = taskCountForAll;
-    }
-
-    public Mentor getMentor() {
-        return mentor;
-    }
-
-    public void setMentor(Mentor mentor) {
-        this.mentor = mentor;
-    }
-
-    public boolean isAllTasksDone() {
-        return allTasksDone;
-    }
-
-    public void setAllTasksDone(boolean allTasksDone) {
-        this.allTasksDone = allTasksDone;
-    }
-
     public void solveTasks(int tasksNumber, Task[] tasks) {
-        if (tasksNumber + taskCount > tasks.length) { // if the student is given more tasks than he needs to solve
-            System.out.printf("You want to solve more tasks than we have!\n(%d left)", tasks.length - taskCount);
-        } else {
-            // the student begins solving tasks from the last solved task last time
-            for (int i = tasks.length - taskCount; i < taskCount + tasksNumber; i++) {
+        // the student begins solving tasks from the last solved task last time
+        for (int i = taskCount; i < taskCount + tasksNumber; i++) {
+            if (i < tasks.length) {
                 solveTask(tasks[i]);
+            } else {
+                break;
             }
-            // if the loop ends, it means the student has solved all the tasks
-            System.out.println("All tasks are done!");
+        }
+        if (taskCount == tasks.length) {
+            System.out.println("\nAll tasks are done!");
             allTasksDone = true;
+        } else {
+            System.out.println("Not all the tasks are solved yet");
         }
     }
 
@@ -61,17 +32,47 @@ public class Student extends Person{
         // if task`s type is 'Test' or 'DragAndDrop', we check the task automatically
         if (task instanceof Autochecked) {
             System.out.println("Task is done");
-            taskCount++;
-            taskCountForAll++;
         } else { // or we send the task to the mentor
             // we send the mentor our task until she checks it
             while (true) {
                 if (mentor.checkCode(task)) {
-                    taskCount++;
-                    taskCountForAll++;
                     break;
                 }
             }
         }
+        taskCount++;
+        taskCountForAll++;
+    }
+
+    public int getTaskCount() { // not used
+        return taskCount;
+    }
+
+    public void setTaskCount(int taskCount) { // not used
+        this.taskCount = taskCount;
+    }
+
+    public static int getTaskCountForAll() {
+        return taskCountForAll;
+    }
+
+    public static void setTaskCountForAll(int taskCountForAll) { // not used
+        Student.taskCountForAll = taskCountForAll;
+    }
+
+    public Mentor getMentor() { // not used
+        return mentor;
+    }
+
+    public void setMentor(Mentor mentor) { // not used
+        this.mentor = mentor;
+    }
+
+    public boolean isAllTasksDone() {
+        return allTasksDone;
+    }
+
+    public void setAllTasksDone(boolean allTasksDone) { // not used
+        this.allTasksDone = allTasksDone;
     }
 }

@@ -2,16 +2,17 @@
 public class Code extends Task{
     private String codeText;
 
-    public Code(int tasksNumber, String taskText) {
-        super(tasksNumber, taskText);
+    public Code() {
+        super();
         this.codeText = "some code text";
+        super.setTaskText("Write code"); //set text of task
     }
 
-    public String getCodeText() {
+    public String getCodeText() { // not used
         return codeText;
     }
 
-    public void setCodeText(String codeText) {
+    public void setCodeText(String codeText) { // not used
         this.codeText = codeText;
     }
 }

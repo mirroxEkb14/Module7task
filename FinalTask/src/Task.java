@@ -1,22 +1,22 @@
 // contains task number and its text
-public abstract class Task {
+abstract class Task {
     private int tasksNumber;
     private String taskText;
 
-    public Task(int tasksNumber, String taskText) {
-        this.tasksNumber = tasksNumber;
-        this.taskText = taskText;
+    public Task() {
+        this.tasksNumber = 0;
+        this.taskText = "";
     }
 
     public int getTasksNumber() {
         return tasksNumber;
     }
 
-    public void setTasksNumber(int tasksNumber) {
+    public void setTaskNumber(int tasksNumber) {
         this.tasksNumber = tasksNumber;
     }
 
-    public String getTaskText() {
+    public String getTaskText() { // not used
         return taskText;
     }
 

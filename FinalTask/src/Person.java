@@ -14,23 +14,23 @@ public class Person {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) { // not used
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getSurname() { // not used
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(String surname) { // not used
         this.surname = surname;
     }
 
-    public int getAge() {
+    public int getAge() { // not used
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age) { // not used
         this.age = age;
     }
 }

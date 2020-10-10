@@ -4,9 +4,10 @@ public class Mentor extends Person implements Staff{
     private boolean isMood; // mentor`s mood
     private Random RANDOM; // constant
 
-    public Mentor(String name, String surname, int age) {
+    public Mentor(String name, String surname, int age, Random RANDOM) {
         super(name, surname, age); // superclass constructor
         this.isMood = true; // the mentor is in a good mood by default
+        this.RANDOM = RANDOM; // the object of class 'Random'
     }
 
     @Override
@@ -16,11 +17,10 @@ public class Mentor extends Person implements Staff{
 
     public boolean checkCode(Task task) {
         boolean isAccepted;
-        RANDOM = new Random();
         int randomDigit = RANDOM.nextInt();
         isMood = randomDigit > 1000;
         if (!isMood) { // if the 'randomDigit' variable less than 1000, the mentor does not check the task
-            System.out.printf("Task # %d was not accepted", task.getTasksNumber());
+            System.out.printf("Task #%d was not accepted, I am in a bad mood\n", task.getTasksNumber());
             isAccepted = false;
         } else {
             System.out.println("Task was accepted");
@@ -29,19 +29,19 @@ public class Mentor extends Person implements Staff{
         return isAccepted;
     }
 
-    public boolean isMood() {
+    public boolean isMood() { // not used
         return isMood;
     }
 
-    public void setMood(boolean mood) {
+    public void setMood(boolean mood) { // not used
         isMood = mood;
     }
 
-    public Random getRANDOM() {
+    public Random getRANDOM() { // not used
         return RANDOM;
     }
 
-    public void setRANDOM(Random RANDOM) {
+    public void setRANDOM(Random RANDOM) { // not used
         this.RANDOM = RANDOM;
     }
 }
